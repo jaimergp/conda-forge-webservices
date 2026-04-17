@@ -1354,7 +1354,7 @@ def main():
         LOGGER.info("server address: http://127.0.0.1:5000/")
         http_server.listen(5000, address="127.0.0.1")
     else:
-        http_server.listen(port)
+        http_server.listen(port, address="0.0.0.0")
 
     pcb = tornado.ioloop.PeriodicCallback(
         lambda: asyncio.create_task(_cache_data()),
