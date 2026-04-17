@@ -1354,19 +1354,19 @@ def main():
         LOGGER.info("server address: http://127.0.0.1:5000/")
         http_server.listen(5000, address="127.0.0.1")
     else:
-        http_server.listen(port, address="0.0.0.0")
+        http_server.listen(port)
 
-    pcb = tornado.ioloop.PeriodicCallback(
-        lambda: asyncio.create_task(_cache_data()),
-        status_monitor.TIME_INTERVAL * 1000,  # in ms
-    )
-    pcb.start()
+    # pcb = tornado.ioloop.PeriodicCallback(
+    #     lambda: asyncio.create_task(_cache_data()),
+    #     status_monitor.TIME_INTERVAL * 1000,  # in ms
+    # )
+    # pcb.start()
 
-    ptk = tornado.ioloop.PeriodicCallback(
-        lambda: asyncio.create_task(_print_token_info()),
-        60 * 5 * 1000,  # five minutes in ms
-    )
-    ptk.start()
+    # ptk = tornado.ioloop.PeriodicCallback(
+    #     lambda: asyncio.create_task(_print_token_info()),
+    #     60 * 5 * 1000,  # five minutes in ms
+    # )
+    # ptk.start()
 
     tornado.ioloop.IOLoop.instance().start()
 
