@@ -50,7 +50,7 @@ COPY conda-lock.yml /
 COPY environment-fastapi.yml /
 
 RUN echo "**** install dev packages ****" && \
-    apk add --no-cache bash ca-certificates wget && \
+    apk add --no-cache bash ca-certificates wget git && \
     rm -rf /var/cache/apk/* && \
     \
     echo "**** get Miniforge3 ****" && \
