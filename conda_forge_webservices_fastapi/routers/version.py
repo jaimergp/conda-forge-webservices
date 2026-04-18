@@ -2,6 +2,7 @@
 Handlers for the /version endpoint
 """
 
+import os
 import sys
 from pathlib import Path
 
@@ -24,7 +25,7 @@ def get_package_versions(*packages: str) -> dict[str, str]:
     JSON documents. Note they are not loaded; only the filenames
     are parsed to obtain the version.
     """
-    prefix = Path(sys.prefix)
+    prefix = Path(os.environ.get("CONDA_PREFIX") or sys.prefix)
     if not (prefix / "conda-meta").is_dir():
         raise RuntimeError("Bad installation")
 
