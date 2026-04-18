@@ -45,6 +45,7 @@ fastapi = [
 [tool.setuptools_scm]
 write_to = "conda_forge_webservices/_version.py"
 write_to_template = "__version__ = '{version}'\n"
+fallback_version = "0.0.0+dev"
 
 [tool.ruff]
 target-version = "py310"
