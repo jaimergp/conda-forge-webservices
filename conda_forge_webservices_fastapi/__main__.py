@@ -1,9 +1,10 @@
 if __name__ == "__main__":
+    import os
+
     import uvicorn
 
     uvicorn.run(
         "conda_forge_webservices_fastapi.webapp:app",
         host="0.0.0.0",
-        port=8000,
-        log_level="info",
+        port=int(os.environ.get("PORT", 8000)),
     )
