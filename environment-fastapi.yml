@@ -5,7 +5,9 @@ platforms:
   - linux-64
 dependencies:
   - python =3.12.*
+  - pip
   - fastapi >=0.95
   - uvicorn >=0.22
   - gidgethub >=5.0
   - httpx >=0.25
+  - conda-smithy >=3.34.1
