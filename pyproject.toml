@@ -31,8 +31,16 @@ conda-forge-webservices-finalize-task = "conda_forge_webservices.github_actions_
 conda-forge-webservices-automerge = "conda_forge_webservices.github_actions_integration.__main__:main_automerge"
 
 [tool.setuptools]
-packages = ["conda_forge_webservices"]
+packages = ["conda_forge_webservices", "conda_forge_webservices_fastapi"]
 include-package-data = true
+
+[project.optional-dependencies]
+fastapi = [
+    "fastapi[standard]>=0.95",
+    "uvicorn[standard]>=0.22",
+    "gidgethub>=5.0",
+    "httpx>=0.25",
+]
 
 [tool.setuptools_scm]
 write_to = "conda_forge_webservices/_version.py"
@@ -46,11 +54,15 @@ line-length = 88
 extend-select = ["E501", "UP", "RUF"]
 ignore = [
     "E203", # allow spaces before colons
+    "RUF029",  # false positives with FastAPI routes
 ]
 select = [
-    "E", "F", "W"
+    "E", "F", "W", "I"
 ]
 preview = true
+
+[tool.ruff.lint.per-file-ignores]
+"!conda_forge_webservices_fastapi/**" = ["I"]
 
 [tool.ruff.lint.pycodestyle]
 max-line-length = 88
