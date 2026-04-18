@@ -9,7 +9,7 @@ router = APIRouter()
 
 @router.get("/status-monitor")
 async def get_status_monitor():
-    return {"status": "ok"}
+    raise NotImplementedError
 
 
 @router.get("/status-monitor/azure")
